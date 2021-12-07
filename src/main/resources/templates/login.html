@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/assets/escudo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/styles-login.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <header th:replace="/fragments/nav-bar :: nav-bar-sin-slider"></header>
+    <main>
+        <section class="form-register">
+            <form th:action="@{/logincheck}" method="POST" id="form">
+                <div class="form">
+                    <img class="logo__club" src="/assets/escudo.png" alt="logo de talleres">
+                    <h1>Login</h1>
+                    <p class="confirmacion__mail" th:if="${param.logout}">Sesión finalizada con éxito</p>
+                    
+                    <div class="grupo">
+
+                        <input class="input" type="email" th:value="${email}" name="email" id="email" required><span class="barra"></span>
+                        <label class="label" for="">Nombre de usuario (e-mail )</label></div>
+                    <div class="grupo">
+                        <input class="input" type="password" name="password" id="password" required><span class="barra"></span>
+                        <label class="label" for="">Contraseña</label>
+                  
+                    <button class="button" type="submit">Iniciar Sesión</button>
+                    <p class="msj-error" th:if="${error}" th:text="${error} ">Ocurrió un error</p>
+                    <p class="confirmacion__mail">¿Olvidaste la contraseña?</p>
+                    <a class="contraseña__olvidada" href="/">Click Aquí</a>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="/main.js"></script>
+    <footer th:replace="/fragments/footer :: footer-fragment-formularios"></footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="/assets/escudo.png" type="image/x-icon">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/styles-equipo.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Equipo</title>
+</head>
+
+<body>
+  <header th:replace="/fragments/nav-bar :: nav-bar-sin-slider"></header>
+  <main>
+    <section class="tienda">
+      <div class="container">
+        <article class="seccion__categoria">
+          <p class="tienda__title-categoria">Jugadores</p>
+          <div class="galery__port" style="display: flex; flex-wrap: wrap">
+
+            <div class="producto__tienda" style="margin-bottom: 10px;" th:each="j : ${jugadores}">
+              <div class="galery__port--img">
+                <a class="galery__port--hover">
+                  <img class="imagen__tienda" th:src="${'/foto/jugador?id='}+${j.id}" alt="camiseta talleres"></a>
+                <div class="descripcion">
+                  <p class="descripcion__producname" th:text="${j.nombreCompleto}">GUIDO HERRERA</p>
+                  <p class="descripcion__produc" th:text="'Posición:' + ${j.posicion.nombre}">Posición: Arquero</p>
+                  <p class="descripcion__produc" th:text="'Nacimiento:' + ${j.fechaNacimiento}">Edad: 28</p>
+                  <p class="descripcion__produc" th:text="'Altura:' + ${j.altura}">Número: 22</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="seccion__categoria">
+          <p class="tienda__title-categoria">Cuerpo Técnico</p>
+          <div class="galery__port" style="display: flex; flex-wrap: wrap">
+
+            <div class="producto__tienda" style="margin-bottom: 10px;" th:each="c : ${cuerpoTecnico}">
+              <div class="galery__port--img">
+                <a class="galery__port--hover">
+                  <img class="imagen__tienda" th:src="${'/foto/cuerpo?id='}+${c.id}" alt="camiseta talleres"></a>
+                <div class="descripcion">
+                  <p class="descripcion__producname" th:text="${c.nombreCompleto}">GUIDO HERRERA</p>
+                  <p class="descripcion__produc" th:text="'Nacionalidad:' + ${c.nacionalidad}">Posición: Arquero</p>
+                  <p class="descripcion__produc" th:text="'Edad:' + ${c.edad}">Edad: 28</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        </div>
+    </section>
+  </main>
+  <script src="/main.js"></script>
+  <footer th:replace="/fragments/footer :: footer-fragment"></footer>
+</body>
+
+</html>
